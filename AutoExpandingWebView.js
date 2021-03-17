@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, WebView, ViewPropTypes } from 'react-native';
+import { WebView } from 'react-native-webview';
+import { View, ViewPropTypes } from 'react-native';
 
 const CONTENT_HEIGHT_MESSAGE = 'CONTENT_HEIGHT_MESSAGE';
 
@@ -8,7 +9,7 @@ const getContentHeightScript = `
   function sendHeight() {
     if (window.postMessage.length === 1) {
       var contentHeight = document.body.clientHeight;
-      window.postMessage('${CONTENT_HEIGHT_MESSAGE}' + contentHeight);
+      window.ReactNativeWebView.postMessage('${CONTENT_HEIGHT_MESSAGE}' + contentHeight);
     } else {
       setTimeout(sendHeight, 100);
     }
